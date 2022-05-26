@@ -1,3 +1,3 @@
 # Teams-to-github
 
-## Amending the file
+## Amending the file.
