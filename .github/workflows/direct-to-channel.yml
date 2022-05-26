@@ -35,7 +35,7 @@ jobs:
           timezone: Europe/London
       - name: Notify dedicated teams channel on failure
         uses: jdcargile/ms-teams-notification@v1.3
-        if: success()
+        if: failure()
         with:
           github-token: ${{ github.token }} # this will use the runner's token.
           ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
