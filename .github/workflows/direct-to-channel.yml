@@ -24,12 +24,21 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Notify dedicated teams channel
+      - name: Notify dedicated teams channel on success
         uses: jdcargile/ms-teams-notification@v1.3
-        if: succeeded()
+        if: success()
         with:
           github-token: ${{ github.token }} # this will use the runner's token.
           ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          notification-summary: Build is running
+          notification-summary: Build succeeded
           notification-color: 17a2b8
+          timezone: Europe/London
+      - name: Notify dedicated teams channel on failure
+        uses: jdcargile/ms-teams-notification@v1.3
+        if: success()
+        with:
+          github-token: ${{ github.token }} # this will use the runner's token.
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: Build failed
+          notification-color: ff0000
           timezone: Europe/London
